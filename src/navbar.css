@@ -1,0 +1,57 @@
+.custom-navbar {
+    background: linear-gradient(135deg, #075985, #0891b2);
+    padding: 14px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.custom-navbar .navbar-brand {
+    color: white;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.custom-navbar .nav-link {
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 10px 20px;
+}
+
+.custom-navbar .nav-link:hover {
+    color: #a5f3fc;
+}
+
+.custom-navbar .dropdown-menu {
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    margin-top: 10px;
+    min-width: 170px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.custom-navbar .dropdown-item {
+    padding: 10px 15px;
+    color: #075985;
+    border-radius: 7px;
+    transition: 0.3s;
+}
+
+.custom-navbar .dropdown-item:hover {
+    background: #e0f7fa;
+    color: #0891b2;
+}
+
+@media (max-width: 991px) {
+    .custom-navbar .navbar-collapse {
+        background: #075985;
+        padding: 15px;
+        margin-top: 12px;
+        border-radius: 10px;
+    }
+
+    .custom-navbar .dropdown-menu {
+        margin-top: 5px;
+        box-shadow: none;
+    }
+}
