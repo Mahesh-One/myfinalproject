@@ -1,24 +1,20 @@
-import React from "react";
-import Navbar from "./navbar";
-import Login from "./login";
-import Register from "./Register";
-import Home from "./Home";
-
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react'
+import { Route,Routes } from 'react-router-dom'
+import Login from './login'
+import Navbar from './navbar'
+import Register from './Register'
+import Home from './Home'
 
 export default function App() {
-    return (
-        <BrowserRouter>
+  return (
+    <div>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
 
-            <Navbar />
-
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-            </Routes>
-
-        </BrowserRouter>
-    );
+      </Routes>
+    </div>
+  )
 }

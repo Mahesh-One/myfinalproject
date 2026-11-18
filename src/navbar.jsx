@@ -1,66 +1,69 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Navbar.css";
+import React, { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
-export default function Navbar() {
+function Navbar() {
+    const [isOpen, setIsOpen] = useState(false)
+    const location = useLocation()
+
+    // Automatically close navbar when route changes
+    useEffect(() => {
+        setIsOpen(false)
+    }, [location.pathname])
+
     return (
-        <nav className="navbar navbar-expand-lg custom-navbar">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
 
-                <Link className="navbar-brand" to="/">
-                    🏥 MediCare
+                {/* Brand */}
+                <Link className="navbar-brand fw-bold" to="/">
+                    My Website
                 </Link>
 
+                {/* Mobile Toggle Button */}
                 <button
                     className="navbar-toggler"
                     type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav"
+                    onClick={() => setIsOpen(!isOpen)}
+                    aria-controls="navbarMenu"
+                    aria-expanded={isOpen}
+                    aria-label="Toggle navigation"
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div className="collapse navbar-collapse" id="navbarNav">
-
+                {/* Navigation Links */}
+                <div
+                    className={`collapse navbar-collapse ${
+                        isOpen ? 'show' : ''
+                    }`}
+                    id="navbarMenu"
+                >
                     <ul className="navbar-nav ms-auto">
 
-                        <li className="nav-item dropdown">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/">
+                                Home
+                            </Link>
+                        </li>
 
-                            <a
-                                className="nav-link dropdown-toggle"
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                            >
-                                Menu
-                            </a>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/login">
+                                Login
+                            </Link>
+                        </li>
 
-                            <ul className="dropdown-menu dropdown-menu-end">
-
-                                <li>
-                                    <Link className="dropdown-item" to="/">
-                                        Home
-                                    </Link>
-                                </li>
-
-                                <li>
-                                    <Link className="dropdown-item" to="/login">
-                                        Login
-                                    </Link>
-                                </li>
-
-                                <li>
-                                    <Link className="dropdown-item" to="/register">
-                                        Register
-                                    </Link>
-                                </li>
-
-                            </ul>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/register">
+                                Register
+                            </Link>
                         </li>
 
                     </ul>
                 </div>
+
             </div>
         </nav>
-    );
+    )
 }
+
+export default Navbar
